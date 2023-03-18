@@ -1,0 +1,59 @@
+from tkinter import *                         #*************************recommendation ****************************
+import tkinter.messagebox as msg
+
+#setting the interface size
+root = Tk()
+root.geometry('600x550')
+root.minsize(600,550)
+root.maxsize(600,550)
+
+#setting the title
+root.title('CodeGeeks')
+
+#making frame 
+frame8 = Frame(root, width = 600, height = 550 , bg = '#3d6466')
+frame8.grid(row = 0 , column = 0 )
+frame8.pack_propagate(False)
+
+t1=Label(frame8,text='CodeGeeks',bg='#3d6466',fg='white',font=('ariel',10),relief=SUNKEN,borderwidth=2)
+t1.place(x=2,y=5)
+
+t2=Label(frame8,text='WIZARDS OF BOOK',bg='#3d6466',fg='white',font=('ariel',10),relief=SUNKEN,borderwidth=2)
+t2.place(x=470,y=5)
+
+#heading text
+text1 = Label(frame8, text='RECOMMENDATION', bg = '#3d6466' , font = 'ariel 25 bold',relief = RAISED,borderwidth = 8 , fg = 'white')
+text1.pack(anchor='n', pady = 25,padx= 0)
+
+t1=Label(frame8,text='Enter Subject',bg='TEAL',fg='white',font=('ariel',15),relief=SUNKEN,borderwidth=2)
+t1.place(x=50,y=150)
+t2=Label(frame8,text='Enter Graduation year',bg='TEAL',fg='white',font=('ariel',15),relief=SUNKEN,borderwidth=2)
+t2.place(x=50,y=250)
+
+
+#tkinter variables 
+subjectvalue = StringVar()
+gyearvalue = StringVar()
+
+
+#enteries from the form
+subjectentry = Entry(frame8, textvariable = subjectvalue,font =("Comic Sans MS", 15))
+gyearentry = Entry(frame8, textvariable = gyearvalue,font =("Comic Sans MS", 15 ))
+
+
+#entry packing
+subjectentry.place(x=300,y=150)
+gyearentry.place(x=300,y=250)
+
+
+
+#adding button back
+b1 = Button(frame8 ,text = 'BACK',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15), relief = RAISED,borderwidth=6)
+b1.place(x=150,y=420)
+
+#adding button 
+b1 = Button(frame8 ,text = 'RECOMMEND',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15), relief = RAISED,borderwidth=6)
+b1.place(x=350,y=420)
+
+
+root.mainloop()
