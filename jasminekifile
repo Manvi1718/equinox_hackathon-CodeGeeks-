@@ -3,13 +3,13 @@
 
 from tkinter import*
 import tkinter.messagebox as MessageBox
-import mysql.connector as mysql
+#import mysql.connector as mysql
 
 def insert():
-    userid= e_userid.get()
-    name= e_name.get()
-    phone=e_phone.get()
-
+    print(userid= e_userid.get())
+    print(name= e_name.get())
+    print(phone=e_phone.get())
+    '''
     if(userid=='' or name=="" or phone==""):
         MessageBox.showinfo("Insert Status","All Fields are Required")
 
@@ -109,9 +109,7 @@ def show():
         list.insert(list.size()+1, insertData) #for adding data to the listbox
         
     con.close()
-        
-
-    
+'''
     
 
 
@@ -144,6 +142,7 @@ e_phone.place(x=150, y=90) #sabse neeche in form
 insert=Button(root,text="insert", font="comicsansms 10",bg="white",command=insert)
 insert.place(x=20, y= 140)
 
+'''
 delete=Button(root,text="Delete",font="comicsansms 10",bg="white", command=delete)
 delete.place(x=100, y=140)
 
@@ -153,7 +152,7 @@ update.place(x=180,y=140)
 
 get=Button(root,text="Get",font="comicsansms 10",bg="white", command=get)
 get.place(x=270, y=140)
-
+'''
 # Display (Listbox)
 
 list= Listbox(root)
