@@ -1,0 +1,165 @@
+#pure vid based
+#suitable for the admins
+
+from tkinter import*
+import tkinter.messagebox as MessageBox
+import mysql.connector as mysql
+
+def insert():
+    userid= e_userid.get()
+    name= e_name.get()
+    phone=e_phone.get()
+
+    if(userid=='' or name=="" or phone==""):
+        MessageBox.showinfo("Insert Status","All Fields are Required")
+
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='python_tkinter')
+        cursor=con.cursor()
+        sql="insert into student values('"+ userid +"','"+ name +"','"+ phone +"')"
+        
+        cursor.execute(sql)
+        con.commit()
+
+        #for clearing out the textboxes after typing in vals
+        e_userid.delete(0,'end')
+        e_name.delete(0,'end')
+        e_phone.delete(0,'end')
+        show()
+        
+        MessageBox.showinfo("Insert Status","Inserted successfully")
+        #print the insertions----?
+        con.close()
+
+def delete():
+    if(e_userid.get()==""):
+        MessageBox.showinfo("Delete Status","ID is required to delete")
+
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='python_tkinter')
+        cursor=con.cursor()
+        sql="delete from student where UserID='"+ e_userid.get() +"'";
+        
+        cursor.execute(sql)
+        con.commit()
+
+        #for clearing out the textboxes after typing in vals
+        e_userid.delete(0,'end')
+        e_name.delete(0,'end')
+        e_phone.delete(0,'end')
+
+        #print the deletions-----?
+        show()
+        MessageBox.showinfo("Delete Status","Deleted successfully")
+        con.close()
+        
+def update():
+    userid= e_userid.get()
+    name= e_name.get()
+    phone=e_phone.get()
+
+    if(userid=='' or name=="" or phone==""):
+        MessageBox.showinfo("Update Status","All Fields are Required")
+
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='python_tkinter')
+        cursor=con.cursor()
+        sql="update student set name='"+ name +"',phone='"+ phone +"' where UserID='"+ userid +"'"
+        
+        cursor.execute(sql)
+        con.commit()
+
+        #for clearing out the textboxes after typing in vals
+        e_userid.delete(0,'end')
+        e_name.delete(0,'end')
+        e_phone.delete(0,'end')
+
+        show()
+        MessageBox.showinfo("Update Status","Updated successfully")
+        #print the insertions----?
+        con.close()
+        
+def get():
+    if (e_userid.get()==''):
+        MessageBox.showinfo("Fetch Status"," Id is compulsory for delete")
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='python_tkinter')
+        cursor=con.cursor()
+        cursor.execute("select * from student where UserID='"+ e_userid.get() +"'")
+        
+        rows=cursor.fetchall()
+
+        for row in rows:
+            e_name.insert(0, row[1])
+            e_phone.insert(0,row[2])
+        
+        con.commit()
+
+        con.close()
+        
+def show():
+    con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='python_tkinter')
+    cursor=con.cursor()
+    cursor.execute("select * from student")
+    rows=cursor.fetchall()
+    list.delete(0,list.size())
+
+    for row in rows:
+        insertData = row[0] + '     '+ row[1]
+        list.insert(list.size()+1, insertData) #for adding data to the listbox
+        
+    con.close()
+        
+
+    
+    
+
+
+
+root=Tk()
+root.geometry("755x400")
+root.title("Wizard of Books")
+
+userid=Label(root,text='UserID',font=('bold',10))
+userid.place(x=20,y=30)
+
+name=Label(root,text='Name',font=('bold',10))
+name.place(x=20,y=60)
+
+phone=Label(root,text='Phone no.',font=('bold',10))
+phone.place(x=20,y=90)
+
+e_userid= Entry()
+e_userid.place(x=150, y=30)
+
+e_name= Entry()
+e_name.place(x=150, y=60)
+
+
+e_phone= Entry()
+e_phone.place(x=150, y=90) #sabse neeche in form
+
+#Buttons
+
+insert=Button(root,text="insert", font="comicsansms 10",bg="white",command=insert)
+insert.place(x=20, y= 140)
+
+delete=Button(root,text="Delete",font="comicsansms 10",bg="white", command=delete)
+delete.place(x=100, y=140)
+
+
+update=Button(root,text="Update",font="comicsansms 10",bg="white", command=update)
+update.place(x=180,y=140)
+
+get=Button(root,text="Get",font="comicsansms 10",bg="white", command=get)
+get.place(x=270, y=140)
+
+# Display (Listbox)
+
+list= Listbox(root)
+list.place(x=320,y=30)
+show()
+                   
+root.mainloop()
+
+
