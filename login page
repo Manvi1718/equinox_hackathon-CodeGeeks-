@@ -1,0 +1,60 @@
+from tkinter import *               #******************************LOGIN PAGE**************************************
+from PIL import Image , ImageTk
+import tkinter.messagebox as msg
+
+#setting the interface size
+root = Tk()
+root.geometry('600x550')
+root.minsize(600,550)
+root.maxsize(600,550)
+
+
+#defininng the function DROPMSG
+def dropmsg():
+    msg.showinfo('forgot password','an E-mail has been sent to your registered E-mail.')
+
+#setting the title
+root.title('CodeGeeks')
+
+#creating frame 
+frame2 = Frame(root, width = 600, height = 550 , bg = '#3d6466')
+frame2.grid(row = 0 , column = 0 )
+frame2.pack_propagate(False)
+
+text1 = Label(frame2, text='LOGIN', bg = '#3d6466' , font = 'ariel 30',relief = RIDGE,borderwidth = 8 , fg = 'white')
+text1.pack(anchor='n', pady = 30,padx= 0)
+
+#adding text 
+b1 = Label(frame2 ,text='UserID',bg='#BDBDBD',fg='black' , font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+
+b2 = Label(frame2 ,text = 'Password',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15, "bold"), relief = SUNKEN,borderwidth=6)
+
+b1.place(x=50,y=150)
+b2.place(x=50,y=250)
+
+#tkinter variables 
+usernamevalue = StringVar()
+pswdvalue = StringVar()
+
+declaration_value = IntVar()
+
+#enteries from the form
+userentry = Entry(frame2, textvariable = usernamevalue,font =("Comic Sans MS", 15))
+pswdentry = Entry(frame2, textvariable = pswdvalue,font =("Comic Sans MS", 15 ))
+
+#entry packing
+userentry.place(x=200,y=150)
+pswdentry.place(x=200,y=250)
+
+#declaration box
+declaration = Checkbutton(frame2,text = 'want to log in', variable = declaration_value,bg='#3d6466',font='courier 20')
+declaration.place(x=150,y=350)
+
+b3 = Button(frame2 ,text = 'Forget Password',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6,command=dropmsg)
+b3.place(x=70,y=450)
+b4 = Button(frame2 ,text = 'Login',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6)
+b4.place(x=350,y=450)
+
+
+
+root.mainloop()
