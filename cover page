@@ -18,7 +18,7 @@ frame1.pack_propagate(False)
 text2 = Label(frame1, text='CodeGeeks', bg = '#3d6466' , font = 'Courier 20',relief = SUNKEN,borderwidth = 2 , fg = 'white')
 text2.pack(anchor='nw', pady = 70,padx= 10)
 
-text1 = Label(frame1, text='LIBRARY MANAGEMENT', bg = '#3d6466' , font = 'ariel 50',relief = RIDGE,borderwidth = 8 , fg = 'white')
+text1 = Label(frame1, text='WIZARD OF BOOKS', bg = '#3d6466' , font = 'ariel 50',relief = RIDGE,borderwidth = 8 , fg = 'white')
 text1.pack(anchor='n', pady = 20,padx= 10)
 
 
