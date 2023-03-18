@@ -1,71 +1,83 @@
-from tkinter import *                         #*********************book issue********************************
+from tkinter import *                      #************************main page ***********************************
 import tkinter.messagebox as msg
 
 #setting the interface size
 root = Tk()
-root.geometry('600x550')
-root.minsize(600,550)
-root.maxsize(600,550)
+root.geometry('1000x600')
+root.minsize(1000,600)
+root.maxsize(1000,600)
 
 #setting the title
 root.title('CodeGeeks')
 
+#setting the frames
+frame4=Frame(root,bg='deeppink',width =200 , height =600 , relief=RAISED)
+frame4.pack(side=LEFT , fill='y')
 
-#making frame 
-frame6 = Frame(root, width = 600, height = 550 , bg = '#3d6466')
-frame6.grid(row = 0 , column = 0 )
-frame6.pack_propagate(False)
+frame5=Frame(root,bg='LightBlue3',width =1000 ,height =600 ,relief=SUNKEN)
+frame5.pack()
 
-t1=Label(frame6,text='CodeGeeks',bg='#3d6466',fg='white',font=('ariel',10),relief=SUNKEN,borderwidth=2)
+#dashboard text
+text1 = Label(frame5, text='DASHBOARD', bg = 'LightBlue3' , font = 'ariel 30 bold',relief = RAISED,borderwidth = 5 , fg = 'black')
+text1.place(x=250,y=50)
+
+b1 = Button(frame4 ,text = 'Book Search',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
+b1.place(x=5,y=100)
+b2 = Button(frame4 ,text = 'Books Issued',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
+b2.place(x=5,y=200)
+b3 = Button(frame4 ,text = 'Recommendations',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
+b3.place(x=5,y=300)
+b4 = Button(frame4 ,text = 'Overdue Books',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
+b4.place(x=5,y=400)
+b5 = Button(frame4 ,text = 'LOGOUT',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
+b5.place(x=5,y=500)
+
+t1=Label(frame4,text='CodeGeeks',bg='deeppink',fg='black',font=('ariel',10),relief=SUNKEN,borderwidth=2)
 t1.place(x=2,y=5)
 
-t2=Label(frame6,text='WIZARDS OF BOOK',bg='#3d6466',fg='white',font=('ariel',10),relief=SUNKEN,borderwidth=2)
-t2.place(x=470,y=5)
+t2=Label(frame5,text='WIZARDS OF BOOK',bg='LightBlue3',fg='white',font=('ariel',10),relief=SUNKEN,borderwidth=2)
+t2.place(x=650,y=5)
 
 
 
-#heading text
-text1 = Label(frame6, text='BOOK ISSUE', bg = '#3d6466' , font = 'ariel 25 bold',relief = RAISED,borderwidth = 8 , fg = 'white')
-text1.pack(anchor='n', pady = 25,padx= 0)
+#image of profile
 
-t1=Label(frame6,text='Book ID',bg='TEAL',fg='white',font=('ariel',20),relief=SUNKEN,borderwidth=2)
-t1.place(x=50,y=130)
-t2=Label(frame6,text='Book Name',bg='teal',fg='white',font=('ariel',20),relief=SUNKEN,borderwidth=2)
-t2.place(x=50,y=190)
-t3=Label(frame6,text='Author',bg='teal',fg='white',font=('ariel',20),relief=SUNKEN,borderwidth=2)
-t3.place(x=50,y=250)
-t4=Label(frame6,text='Returning date',bg='teal',fg='white',font=('ariel',20),relief=SUNKEN,borderwidth=2)
-t4.place(x=50,y=310)
+photo = PhotoImage(file='profilepicture.png')
+show=Label(frame5,image=photo)
+show.place(x=50,y=185)
+
+
+
+t2=Label(frame5,text='NAME',bg='LightBlue3',fg='white',font=('ariel',20),relief=RIDGE,borderwidth=5)
+t2.place(x=300,y=170)
+t2=Label(frame5,text='E-MAIL',bg='LightBlue3',fg='white',font=('ariel',20),relief=RIDGE,borderwidth=5)
+t2.place(x=300,y=250)
+t2=Label(frame5,text='PHONE',bg='LightBlue3',fg='white',font=('ariel',20),relief=RIDGE,borderwidth=5)
+t2.place(x=300,y=330)
+t2=Label(frame5,text='BRANCH',bg='LightBlue3',fg='white',font=('ariel',20),relief=RIDGE,borderwidth=5)
+t2.place(x=300,y=410)
 
 #tkinter variables 
-bookvalue = StringVar()
-bnamevalue = StringVar()
-authorvalue = StringVar()
-datevalue = StringVar()
-
+namevalue = StringVar()
+emailvalue = StringVar()
+phonevalue = StringVar()
+branchvalue = StringVar()
 
 #enteries from the form
-bookentry = Entry(frame6, textvariable = bookvalue,font =("Comic Sans MS", 15))
-bnameentry = Entry(frame6, textvariable = bnamevalue,font =("Comic Sans MS", 15 ))
-authorentry = Entry(frame6, textvariable = authorvalue,font =("Comic Sans MS", 15 ))
-dateentry = Entry(frame6, textvariable = datevalue,font =("Comic Sans MS", 15 ))
+nameentry = Entry(frame5, textvariable = namevalue,font =("Comic Sans MS", 15))
+emailentry = Entry(frame5, textvariable = emailvalue,font =("Comic Sans MS", 15 ))
+phoneentry = Entry(frame5, textvariable = phonevalue,font =("Comic Sans MS", 15 ))
+branchentry = Entry(frame5, textvariable = branchvalue,font =("Comic Sans MS", 15 ))
 
 #entry packing
-bookentry.place(x=270,y=130)
-bnameentry.place(x=270,y=190)
-authorentry.place(x=270,y=250)
-dateentry.place(x=270,y=310)
+nameentry.place(x=450,y=170)
+emailentry.place(x=450,y=250)
+phoneentry.place(x=450,y=330)
+branchentry.place(x=450,y=410)
 
 
-#adding button back
-b1 = Button(frame6 ,text = 'BACK',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15), relief = RAISED,borderwidth=6)
-b1.place(x=150,y=420)
 
-#adding button 
-b1 = Button(frame6 ,text = 'ISSUE BOOK',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15), relief = RAISED,borderwidth=6)
-b1.place(x=350,y=420)
+
+
 
 root.mainloop()
-
-
-
