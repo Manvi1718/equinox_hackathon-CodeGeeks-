@@ -16,11 +16,11 @@ def dropmsg1():
 root.title('CodeGeeks')
 
 #creating frame 
-frame3 = Frame(root, width = 600, height = 550 , bg = '#3d6466')
+frame3 = Frame(root, width = 600, height = 550 , bg = 'violetred3')
 frame3.grid(row = 0 , column = 0 )
 frame3.pack_propagate(False)
 
-text1 = Label(frame3, text='USER REGISTRATION', bg = '#3d6466' , font = 'ariel 30',relief = RIDGE,borderwidth = 8 , fg = 'white')
+text1 = Label(frame3, text='USER REGISTRATION', bg = 'deeppink4' , font = 'ariel 30',relief = RIDGE,borderwidth = 8 , fg = 'white')
 text1.pack(anchor='n', pady = 25,padx= 0)
 
 #adding text 
@@ -57,10 +57,10 @@ pswdentry.place(x=200,y=330)
 
 
 #declaration box
-declaration = Checkbutton(frame3,text = 'want to register', variable = declaration_value ,bg='#3d6466',font='courier 20')
+declaration = Checkbutton(frame3,text = 'want to register', variable = declaration_value ,bg='violetred3',font='courier 20')
 declaration.place(x=150,y=400)
 
-b3 = Button(frame3 ,text = 'Submit',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6,command=dropmsg1)
+b3 = Button(frame3 ,text = 'Submit',bg='sandybrown',fg='black',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6,command=dropmsg1)
 b3.place(x=250,y=450)
 
 
