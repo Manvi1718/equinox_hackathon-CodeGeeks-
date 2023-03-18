@@ -22,11 +22,13 @@ text1 = Label(frame5, text='DASHBOARD', bg = 'LightBlue3' , font = 'ariel 30 bol
 text1.place(x=250,y=50)
 
 b1 = Button(frame4 ,text = 'Book Search',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
-b1.place(x=5,y=120)
+b1.place(x=5,y=100)
 b2 = Button(frame4 ,text = 'Books Issued',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
-b2.place(x=5,y=250)
+b2.place(x=5,y=200)
+b3 = Button(frame4 ,text = 'Recommendations',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
+b3.place(x=5,y=300)
 b4 = Button(frame4 ,text = 'Overdue Books',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
-b4.place(x=5,y=380)
+b4.place(x=5,y=400)
 b5 = Button(frame4 ,text = 'LOGOUT',bg='deeppink',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=5)
 b5.place(x=5,y=500)
 
