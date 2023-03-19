@@ -17,6 +17,16 @@ frame4.pack(side=LEFT , fill='y')
 frame5=Frame(root,bg='LightBlue3',width =1000 ,height =600 ,relief=SUNKEN)
 frame5.pack()
 
+#DEFINING THE FUNCTION FOR EDIT BUTTON
+def edit():
+    msg.showinfo('edit','Your Credentials are going to be changed !! click OK if want to edit your credentails ')
+
+
+#DEFINING THE FUNCTION FOR SAVE BUTTON
+def save():
+    msg.showinfo('saved succcesfully','Your Credentials have been edited succesfullly.')
+    
+
 #dashboard text
 text1 = Label(frame5, text='DASHBOARD', bg = 'LightBlue3' , font = 'ariel 30 bold',relief = RAISED,borderwidth = 5 , fg = 'black')
 text1.place(x=250,y=50)
@@ -42,9 +52,9 @@ t2.place(x=650,y=5)
 
 #image of profile
 
-photo = PhotoImage(file='profilepicture.png')
-show=Label(frame5,image=photo)
-show.place(x=50,y=185)
+#photo = PhotoImage(file='profilepicture.png')
+#show=Label(frame5,image=photo)
+#show.place(x=50,y=185)
 
 
 
@@ -57,23 +67,25 @@ t2.place(x=300,y=330)
 t2=Label(frame5,text='BRANCH',bg='LightBlue3',fg='white',font=('ariel',20),relief=RIDGE,borderwidth=5)
 t2.place(x=300,y=410)
 
-#tkinter variables 
-namevalue = StringVar()
-emailvalue = StringVar()
-phonevalue = StringVar()
-branchvalue = StringVar()
 
-#enteries from the form
-nameentry = Entry(frame5, textvariable = namevalue,font =("Comic Sans MS", 15))
-emailentry = Entry(frame5, textvariable = emailvalue,font =("Comic Sans MS", 15 ))
-phoneentry = Entry(frame5, textvariable = phonevalue,font =("Comic Sans MS", 15 ))
-branchentry = Entry(frame5, textvariable = branchvalue,font =("Comic Sans MS", 15 ))
 
-#entry packing
-nameentry.place(x=450,y=170)
-emailentry.place(x=450,y=250)
-phoneentry.place(x=450,y=330)
-branchentry.place(x=450,y=410)
+
+t2=Label(frame5,text='wizard_book_world',bg='white',fg='black',font=('ariel',20),relief=RIDGE,borderwidth=2)
+t2.place(x=450,y=170)
+t2=Label(frame5,text='gmj@wizard.ac.in',bg='white',fg='black',font=('ariel',20),relief=RIDGE,borderwidth=2)
+t2.place(x=450,y=250)
+t2=Label(frame5,text='8815347890',bg='white',fg='black',font=('ariel',20),relief=RIDGE,borderwidth=2)
+t2.place(x=450,y=330)
+t2=Label(frame5,text='CSE-AI',bg='white',fg='black',font=('ariel',20),relief=RIDGE,borderwidth=2)
+t2.place(x=450,y=410)
+
+
+#adding buttons for edit and save 
+b1 = Button(frame5 ,text='EDIT',bg='sandybrown',fg='black' , font=("Comic Sans MS", 20, "bold") , relief= RAISED,borderwidth = 6,command=edit)
+b1.place(x=150,y=500)
+b2 = Button(frame5 ,text = 'SAVE',bg='sandybrown',fg='black',font =("Comic Sans MS", 20, "bold"), relief = RAISED,borderwidth=6,command=save)
+b2.place(x=550,y=500)
+
 
 
 
