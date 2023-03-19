@@ -1,0 +1,55 @@
+from tkinter import *                         #*************************admin login****************************
+import tkinter.messagebox as msg
+
+#setting the interface size
+root = Tk()
+root.geometry('600x550')
+root.minsize(600,550)
+root.maxsize(600,550)
+
+#setting the title
+root.title('CodeGeeks')
+
+def forgot_password():
+    msg.showinfo("Reset Password","Kindly Contact the Research Centre")
+def login():
+    import admin_userinfo
+    
+#making frame 
+frame9 = Frame(root, width = 600, height = 550 , bg = '#f5c647')
+frame9.grid(row = 0 , column = 0 )
+frame9.pack_propagate(False)
+
+text1 = Label(frame9, text='ADMIN LOGIN', bg = 'deeppink4' , font = 'ariel 30',relief = RIDGE,borderwidth = 8 , fg = 'white')
+text1.pack(anchor='n', pady = 30,padx= 0)
+
+#adding text 
+b1 = Label(frame9 ,text='Admin ID',bg='#BDBDBD',fg='black' , font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+b2 = Label(frame9 ,text = 'Password',bg='#BDBDBD',fg='black' , font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+
+b1.place(x=50,y=150)
+b2.place(x=50,y=250)
+
+#tkinter variables 
+usernamevalue = StringVar()
+pswdvalue = StringVar()
+
+
+#enteries from the form
+userentry = Entry(frame9, textvariable = usernamevalue,font =("Comic Sans MS", 15))
+pswdentry = Entry(frame9, textvariable = pswdvalue,font =("Comic Sans MS", 15 ))
+
+#entry packing
+userentry.place(x=200,y=150)
+pswdentry.place(x=200,y=250)
+
+#buttons of forget pass and submit
+b3 = Button(frame9 ,text = 'Forget Password',bg='sandybrown',fg='black',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6,command=forgot_password)
+b3.place(x=70,y=340)
+b4 = Button(frame9 ,text = 'Login',bg='sandybrown',fg='black',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6,command=login)
+b4.place(x=350,y=340)
+
+
+
+root.mainloop()
+
