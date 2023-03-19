@@ -1,0 +1,188 @@
+from tkinter import *                         #*************************BOOK ADMIN PAGE****************************
+import tkinter.messagebox as msg
+import mysql.connector as mysql
+
+#setting the interface size
+root = Tk()
+root.geometry('620x550')
+root.minsize(344,550)
+root.maxsize(620,550)
+
+#setting the title
+root.title('Book Info')
+
+def insert():
+    bookid= bookentry.get()
+    bname= bnameentry.get()
+    author=authorentry.get()
+    status=statusentry.get()
+    subject=subjectentry.get()
+
+    if(bookid==''):
+        msg.showinfo("Insert Status","All fields are Required")
+
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='library')
+        cursor=con.cursor()
+        sql="insert into book_information values('"+ bookid +"','"+ bname +"','"+ author +"','"+ status +"','"+ subject +"')"
+        
+        cursor.execute(sql)
+        con.commit()
+
+        #for clearing out the textboxes after typing in vals
+        bookentry.delete(0,'end')
+        bnameentry.delete(0,'end')
+        authorentry.delete(0,'end')
+        statusentry.delete(0,'end')
+        subjectentry.delete(0,'end')
+        
+        
+        msg.showinfo("Insert Status","Inserted successfully")
+        
+        con.close()
+
+
+def update():
+    bookid= bookentry.get()
+    bname= bnameentry.get()
+    author=authorentry.get()
+    status=statusentry.get()
+    subject=subjectentry.get()
+
+    if(bookid==''):
+        msg.showinfo("Update Status","All Fields are Required")
+
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='library')
+        cursor=con.cursor()
+        sql="update book_information set BookID='"+ bookid +"', Book_Name='"+ bname +"', Author='"+ author +"', status='"+ status +"', Subject='"+ subject +"' where BookID='"+ bookid +"'"
+        
+    
+        
+        
+        cursor.execute(sql)
+        con.commit()
+
+        #for clearing out the textboxes after typing in vals
+        
+        msg.showinfo("Update Status","Updated successfully")
+        #print the insertions----?
+        con.close()
+        
+
+def delete():
+    
+    bookid= bookentry.get()
+    if(bookid==""):
+        msg.showinfo("Delete Status","BookID is required to delete")
+
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='library')
+        cursor=con.cursor()
+        sql="delete from book_information where BookID='"+ bookentry.get() +"'";
+        
+        cursor.execute(sql)
+        con.commit()
+
+        #for clearing out the textboxes after typing in vals
+        bookentry.delete(0,'end')
+        bnameentry.delete(0,'end')
+        authorentry.delete(0,'end')
+        statusentry.delete(0,'end')
+        subjectentry.delete(0,'end')
+        
+        
+        msg.showinfo("Delete Status","Deleted successfully")
+        
+        con.close()
+    
+    
+def fetch():
+    if (bookentry.get()==''):
+        msg.showinfo("Fetch Status"," Id is compulsory for delete")
+    else:
+        con= mysql.connect(host="localhost",user="root", password='niallhoran@1993',database='library')
+        cursor=con.cursor()
+        cursor.execute("select * from book_information where BookID='"+ bookentry.get() +"'")
+        
+        rows=cursor.fetchall()
+
+        for row in rows:
+            
+            bnameentry.insert(0,row[1])
+            authorentry.insert(0,row[2])
+            statusentry.insert(0,row[3])
+            subjectentry.insert(0,row[4])
+        
+        con.commit()
+
+        con.close()
+
+#making frame 
+
+frame13= Frame(root, width = 620, height = 550, bg = 'orchid4')
+frame13.grid(row = 2, column = 0 )
+frame13.pack_propagate(False)
+
+frame12 = Frame(root, width = 620, height = 50, bg = '#3d6466')
+frame12.grid(row = 0 , column = 0 )
+frame12.pack_propagate(False)
+
+
+#buttons
+b3 = Button(frame12 ,text = '        USER INFO         ',bg='grey',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6)
+b3.place(x=0,y=0)
+b4 = Button(frame12,text = '         BOOK INFO        ',bg='sandybrown',fg='white',font =("Comic Sans MS", 15, "bold"), relief = RAISED,borderwidth=6)
+b4.place(x=310,y=0)
+
+
+#adding text 
+b1 = Label(frame13 ,text='Book ID',bg='#BDBDBD',fg='black' , font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+b2 = Label(frame13 ,text = 'Book Name',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15, "bold"), relief = SUNKEN,borderwidth=6)
+b3 = Label(frame13 ,text='Author',bg='#BDBDBD',fg='black' , font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+b4 = Label(frame13 ,text = 'Status',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15, "bold"), relief = SUNKEN,borderwidth=6)
+b5 = Label(frame13 ,text = 'Subject',bg='#BDBDBD',fg='black',font =("Comic Sans MS", 15, "bold"), relief = SUNKEN,borderwidth=6)
+
+
+b1.place(x=50,y=80)
+b2.place(x=50,y=140)
+b3.place(x=50,y=200)
+b4.place(x=50,y=260)
+b5.place(x=50,y=320)
+
+#tkinter variables 
+'''bookvalue = StringVar()
+bnamevalue = StringVar()
+authorvalue =StringVar()
+statusvalue=StringVar()
+subjectvalue=StringVar()'''
+
+#enteries from the form
+bookentry = Entry(frame13,font =("Comic Sans MS", 15))
+bnameentry = Entry(frame13,font =("Comic Sans MS", 15 ))
+authorentry = Entry(frame13,font =("Comic Sans MS", 15 ))
+statusentry = Entry(frame13,font =("Comic Sans MS", 15 ))
+subjectentry = Entry(frame13,font =("Comic Sans MS", 15 ))
+
+#entry packing
+bookentry.place(x=200,y=80)
+bnameentry.place(x=200,y=140)
+authorentry.place(x=200,y=200)
+statusentry.place(x=200,y=260)
+subjectentry.place(x=200,y=320)
+
+
+#buttons 
+b3 = Button(frame13 ,text = 'INSERT',bg='sandybrown',fg='black',font =("Comic Sans MS", 10, "bold"), relief = RAISED,borderwidth=6,command=insert)
+b3.place(x=50,y=420)
+b4 = Button(frame13,text = 'UPDATE',bg='sandybrown',fg='black',font =("Comic Sans MS", 10, "bold"), relief = RAISED,borderwidth=6,command=update)
+b4.place(x=180,y=420)
+b3 = Button(frame13,text = 'DELETE',bg='sandybrown',fg='black',font =("Comic Sans MS", 10, "bold"), relief = RAISED,borderwidth=6,command=delete)
+b3.place(x=315,y=420)
+b4 = Button(frame13,text = 'FETCH',bg='sandybrown',fg='black',font =("Comic Sans MS", 10, "bold"), relief = RAISED,borderwidth=6,command=fetch)
+b4.place(x=450,y=420)
+
+
+
+root.mainloop()
+
