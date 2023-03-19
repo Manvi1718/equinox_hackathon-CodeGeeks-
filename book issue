@@ -1,0 +1,74 @@
+from tkinter import *                         #*********************book issue********************************
+import tkinter.messagebox as msg
+
+#setting the interface size
+root = Tk()
+root.geometry('600x550')
+root.minsize(600,550)
+root.maxsize(600,550)
+
+#setting the title
+root.title('CodeGeeks')
+
+
+#making frame 
+frame6 = Frame(root, width = 600, height = 550 , bg = 'violetred3')
+frame6.grid(row = 0 , column = 0 )
+frame6.pack_propagate(False)
+
+t1=Label(frame6,text='CodeGeeks',bg='#3d6466',fg='white',font=('ariel',10),relief=SUNKEN,borderwidth=2)
+t1.place(x=2,y=5)
+
+t2=Label(frame6,text='WIZARDS OF BOOK',bg='#3d6466',fg='white',font=('ariel',10),relief=SUNKEN,borderwidth=2)
+t2.place(x=470,y=5)
+
+
+
+#heading text
+text1 = Label(frame6, text='BOOK ISSUE', bg = 'deeppink4' , font = 'ariel 25 bold',relief = RAISED,borderwidth = 8 , fg = 'white')
+text1.pack(anchor='n', pady = 25,padx= 0)
+
+
+
+
+t1=Label(frame6,text='Book ID',bg='#BDBDBD',fg='black' , font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+t1.place(x=50,y=130)
+t2=Label(frame6,text='Book Name',bg='#BDBDBD',fg='black' ,font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+t2.place(x=50,y=190)
+t3=Label(frame6,text='Author',bg='#BDBDBD',fg='black', font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+t3.place(x=50,y=250)
+t4=Label(frame6,text='Returning date',bg='#BDBDBD',fg='black', font=("Comic Sans MS", 15, "bold") , relief= SUNKEN,borderwidth = 6)
+t4.place(x=50,y=310)
+
+#tkinter variables 
+bookvalue = StringVar()
+bnamevalue = StringVar()
+authorvalue = StringVar()
+datevalue = StringVar()
+
+
+#enteries from the form
+bookentry = Entry(frame6, textvariable = bookvalue,font =("Comic Sans MS", 15))
+bnameentry = Entry(frame6, textvariable = bnamevalue,font =("Comic Sans MS", 15 ))
+authorentry = Entry(frame6, textvariable = authorvalue,font =("Comic Sans MS", 15 ))
+dateentry = Entry(frame6, textvariable = datevalue,font =("Comic Sans MS", 15 ))
+
+#entry packing
+bookentry.place(x=270,y=130)
+bnameentry.place(x=270,y=190)
+authorentry.place(x=270,y=250)
+dateentry.place(x=270,y=310)
+
+
+#adding button back
+b1 = Button(frame6 ,text = 'BACK',bg='sandybrown',fg='black',font =("Comic Sans MS", 15), relief = RAISED,borderwidth=6)
+b1.place(x=150,y=420)
+
+#adding button 
+b1 = Button(frame6 ,text = 'ISSUE BOOK',bg='sandybrown',fg='black',font =("Comic Sans MS", 15), relief = RAISED,borderwidth=6)
+b1.place(x=350,y=420)
+
+root.mainloop()
+
+
+
